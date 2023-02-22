@@ -49,7 +49,7 @@ public class DebugRenderTextureFeature : ScriptableRendererFeature
 
     [SerializeField]
     [Range(1.0f, 20.0f)]
-    private const float m_StepSize = 10.0f;
+    private float m_StepSize = 10.0f;
 
     [HideInInspector]
     [SerializeField]
