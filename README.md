@@ -1,7 +1,7 @@
 # RenderPipelineStepDebugger
 The display render pipeline step debugger.
 <br>
-Maybe it's a good idea to observe the result of each running step at any time, instead of stupidly locking on that FrameDebuffer.
+Maybe it's a good idea to observe the result of each running step at any time, instead of stupidly locking on that FrameDebugger.
 <br>
 <br>
 First: AfterSkyBox
