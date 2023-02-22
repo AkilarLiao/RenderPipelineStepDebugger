@@ -12,13 +12,10 @@ public class HandleURPRenderStepFeature : ScriptableRendererFeature
     public override void AddRenderPasses(ScriptableRenderer renderer,
         ref RenderingData renderingData)
     {
-        m_AfterSkyPass.SetTargetRenderer(renderer);
         renderer.EnqueuePass(m_AfterSkyPass);
 
-        m_AfterTransparencyPass.SetTargetRenderer(renderer);
         renderer.EnqueuePass(m_AfterTransparencyPass);
 
-        m_AfterPostProcessingPass.SetTargetRenderer(renderer);
         renderer.EnqueuePass(m_AfterPostProcessingPass);
     }
     private AppendColorBufferPass m_AfterSkyPass = null;
