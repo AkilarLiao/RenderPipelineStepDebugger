@@ -7,14 +7,11 @@ public class DebugRenderTextureFeature : ScriptableRendererFeature
     public override void Create()
     {
 #if UNITY_EDITOR
-        //ResourceReloader.ReloadAllNullIn(this,
-        //MobilePipeline.c_packagePath);
-        ResourceReloader.ReloadAllNullIn(this,
-            UniversalRenderPipelineAsset.packagePath);
+        ResourceReloader.ReloadAllNullIn(this, UniversalRenderPipelineAsset.packagePath);
 #endif
         m_BlitMaterial = CoreUtils.CreateEngineMaterial(m_Shaders.m_BltPS);
-        m_DrawDebugRenderTexturePass.ReInitialize(
-            RenderPassEvent.AfterRendering + 2, m_BlitMaterial);
+        m_DrawDebugRenderTexturePass.ReInitialize(RenderPassEvent.AfterRendering + 2, m_BlitMaterial, m_DisplayRatio,
+            m_ColumnCount, m_StepSize);
     }
 
     protected override void Dispose(bool disposing)
@@ -34,16 +31,30 @@ public class DebugRenderTextureFeature : ScriptableRendererFeature
         }
     }
 
+    
     [System.Serializable, ReloadGroup]
     public sealed class ShaderResources
     {
         [Reload("Shaders/Utils/Blit.shader")]
         public Shader m_BltPS = null;
     }
-    public ShaderResources m_Shaders = null;
+
+    [SerializeField]
+    [Range(0.1f, 0.5f)]
+    private float m_DisplayRatio = 0.3f;
+
+    [SerializeField]
+    [Range(1, 6)]
+    private uint m_ColumnCount = 3;
+
+    [SerializeField]
+    [Range(1.0f, 20.0f)]
+    private const float m_StepSize = 10.0f;
+
+    [HideInInspector]
+    [SerializeField]
+    private ShaderResources m_Shaders = null;
 
     private Material m_BlitMaterial = null;
     private DrawDebugRenderTexturePass m_DrawDebugRenderTexturePass = new DrawDebugRenderTexturePass();
-    public static readonly string c_packagePath =
-        "Packages/com.igg.mobile-urp";
 }
