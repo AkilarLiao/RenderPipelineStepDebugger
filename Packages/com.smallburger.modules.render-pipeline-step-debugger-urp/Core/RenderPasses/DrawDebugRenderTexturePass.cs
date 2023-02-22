@@ -1,4 +1,4 @@
-#define TEST_ADD
+//#define TEST_ADD
 
 using System.Collections.Generic;
 using UnityEngine;
