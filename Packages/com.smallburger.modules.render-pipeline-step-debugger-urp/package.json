@@ -1,0 +1,21 @@
+{
+    "name": "com.smallburger.modules.render-pipeline-step-debugger-urp",
+    "description": "The renderpipeline step debug for URP.",
+    "version": "1.0.0-preview.1",
+    "unity": "2021.3",
+    "displayName": "RenderPipelineStepDebugger",
+    "dependencies": {
+		"com.unity.mathematics": "1.2.1",
+        "com.unity.render-pipelines.universal": "7.6.0"
+    },
+	"keywords": [
+		"unity",
+		"urp",
+		"graphics"
+	],
+	"author": {
+		"name": "AkilarLiao",
+		"email": "lee.akilar@gmail.com",
+		"url": "https://makedreamvsogre.blogspot.com/"
+	}
+}
