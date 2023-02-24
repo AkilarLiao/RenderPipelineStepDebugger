@@ -12,7 +12,6 @@ public class AppendColorBufferPass : ScriptableRenderPass
     {
         var renderTargetIdentifier = renderingData.cameraData.renderer.cameraColorTarget;
         var clearColor = this.clearColor;
-        DrawDebugRenderTexturePass.Add(ref context, ref renderTargetIdentifier,
-            ref clearColor, this.clearFlag);
+        DrawDebugRenderTexturePass.Add(ref context, ref renderTargetIdentifier);
     }
 }

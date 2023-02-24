@@ -26,7 +26,8 @@ public class DrawDebugRenderTexturePass : ScriptableRenderPass
     }
 
     public static bool Add(ref ScriptableRenderContext context,
-        ref RenderTargetIdentifier destTarget, ref Color clearColor, ClearFlag clearFalg)
+        ref RenderTargetIdentifier destTarget, Material targetBltMaterial = null,
+        int passIndex = 0)
     {
         if (ms_targetRenderer == null)
             return false;
@@ -35,11 +36,7 @@ public class DrawDebugRenderTexturePass : ScriptableRenderPass
             0, RenderTextureFormat.ARGB32);
         CommandBuffer command = CommandBufferPool.Get("BltingToDebugRT");
 
-        command.Blit(destTarget, copyRT);
-
-        //restore original renderTarget
-        //command.SetRenderTarget(ms_targetRenderer.cameraColorTarget,
-            //ms_targetRenderer.cameraDepthTarget);
+        command.Blit(destTarget, copyRT, targetBltMaterial, passIndex);
 
         context.ExecuteCommandBuffer(command);
         CommandBufferPool.Release(command);
